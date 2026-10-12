@@ -2,12 +2,12 @@ Anggota :
 - Nama : Krisanti Sianturi
   NIM  : 25110048
 - Nama : Vania Rachel Simanjuntak
-  NIM  : 251100
-- Nama : Yulihana Putri Lubis
-  NIM  : 251100
-- Nama : Winceria Girsang
-  NIM  : 251100
+  NIM  : 25110082
+- Nama : Yuli Hanna Putri Lubis
+  NIM  : 25110091
+- Nama : Winceria Monalita Girsang
+  NIM  : 25110085
 - Nama : Ade Giovany Lubis
-  NIM  : 251100
-- Nama : Michael
-  NIM  : 251100
+  NIM  : 25110094
+- Nama : Mikhael Saputra Sinaga
+  NIM  : 25110118
