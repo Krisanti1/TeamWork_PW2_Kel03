@@ -1,0 +1,5 @@
+Nama : Vania Rachel Simanjuntak
+NIM : 25110082
+Role : public (css, js dan index.php)
+Job Desk : merancang halaman utama dan memberikan styling menggunakan css
+Work Description : Menyusun struktur utama halaman index.php, Merancang tata letak
