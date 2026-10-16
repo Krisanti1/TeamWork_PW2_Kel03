@@ -1,4 +1,4 @@
-Nama             : ade lubis
+Nama             : Ade Giovany Lubis
 NIM              : 25110094
 Role             : Storage & File Management Engineer
 Job Desk         : Mengelola direktori penyimpanan file/asset, penanganan file upload,
