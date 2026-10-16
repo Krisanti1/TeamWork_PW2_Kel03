@@ -5,4 +5,4 @@ Job Desk         : Mengatur konfigurasi database (database.php), inisialisasi ko
                    serta struktur dasar direktori aplikasi MVC.
 Work Description : Bertanggung jawab dalam pembuatan file konfigurasi database, 
                    memastikan koneksi antara PHP native dan MySQL/MariaDB berjalan lancar, 
-                   serta menyiapkan arsitektur dasar folder config dan helper sistem.
+                   serta menyiapkan arsitektur dasar folder config dan helper sistem
