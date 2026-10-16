@@ -1,0 +1,5 @@
+Nama             : Yuli Hanna Putri Lubis
+NIM              : 25110091
+Role             : Frontend & User Interface Engineer
+Job Desk         : Merancang dan membuat struktur antarmuka tampilan (views) aplikasi Pemesanan Kantin, termasuk komponen reusable, layout, dan halaman interaktif.
+Work Description : Bertanggung jawab dalam pembuatan folder views (components, layouts, pages), merancang tampilan antarmuka katalog menu, tombol interaktif, status pesanan, serta memastikan tata letak antarmuka pengguna (UI) responsif dan rapi.
