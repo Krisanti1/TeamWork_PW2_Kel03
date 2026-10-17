@@ -1,0 +1,47 @@
+/* Styling Khusus Halaman Produk - SISKAN Store */
+
+/* Efek Hover pada Kartu Produk */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(107, 70, 193, 0.15) !important;
+}
+
+/* Penyesuaian Gambar Produk */
+.card-img-top {
+    border-bottom: 1px solid #f1f1f1;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+/* Styling Tombol Pesan */
+.btn-pesan {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pesan:hover {
+    background-color: #97266D !important;
+    transform: scale(1.05);
+}
+
+.btn-pesan:active {
+    transform: scale(0.98);
+}
+
+/* Custom Scrollbar Ringan */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #B83280;
+    border-radius: 4px;
+}
