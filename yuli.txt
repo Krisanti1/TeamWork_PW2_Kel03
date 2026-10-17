@@ -1,5 +1,5 @@
 Nama             : Yuli Hanna Putri Lubis
 NIM              : 25110091
-Role             : Backend Developer (Controllers & Models)
-Job Desk         : Merancang logika bisnis aplikasi (Controllers) dan mengelola struktur data serta interaksi dengan database (Models).
-Work Description : Bertanggung jawab dalam membuat controller untuk menangani permintaan/request dari pengguna, memproses data logika aplikasi, serta membuat model untuk mengelola operasi CRUD (Create, Read, Update, Delete) data pada database dalam arsitektur berbasis MVC.
+Role             : Frontend & User Interface Engineer
+Job Desk         : Merancang dan membuat struktur antarmuka tampilan (views) aplikasi Pemesanan Kantin, termasuk komponen reusable, layout, dan halaman interaktif.
+Work Description : Bertanggung jawab dalam pembuatan folder views (components, layouts, pages), merancang tampilan antarmuka katalog menu, tombol interaktif, status pesanan, serta memastikan tata letak antarmuka pengguna (UI) responsif dan rapi.
