@@ -64,6 +64,12 @@ $products = [
 ];
 ?>
 
+<?php
+// 1. Panggil Header di paling atas
+require_once __DIR__ . '/../components/header.php';
+?>
+
+
 <div class="container my-5">
     <div class="text-center mb-5">
         <h2 class="fw-bold" style="color: #6B46C1;">Daftar Menu Kantin</h2>
@@ -106,6 +112,10 @@ $products = [
         <?php endforeach; ?>
     </div>
 </div>
+<?php
+// 3. Panggil Footer di paling bawah
+require_once __DIR__ . '/../components/footer.php';
+?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/app.js"></script>
