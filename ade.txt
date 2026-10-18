@@ -1,0 +1,8 @@
+Nama             : Ade Giovany Lubis
+NIM              : 25110094
+Role             : Storage & File Management Engineer
+Job Desk         : Mengelola direktori penyimpanan file/asset, penanganan file upload,
+                   serta struktur folder penyimpanan sistem (storage) aplikasi.
+Work Description : Bertanggung jawab dalam merancang struktur folder storage (seperti public/uploads, logs, atau cache),
+                   memastikan sistem folder aman, serta mengatur fungsi pengolahan file dan direktori pendukung
+                   untuk kebutuhan operasional aplikasi kantin berbasis MVC.
