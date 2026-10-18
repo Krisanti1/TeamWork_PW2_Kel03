@@ -3,4 +3,5 @@ NIM              : 25110085
 Role             : Backend Application & Core Logic Engineer
 Job Desk         : Mengembangkan logika bisnis layanan (services), sistem validasi/keamanan (middlewares), serta fungsi bantuan (helpers).
 Work Description : Bertanggung jawab dalam merancang dan mengimplementasikan komponen pendukung aplikasi pada folder app, 
-                   seperti Service untuk pemrosesan logika data, Middleware untuk otentikasi/penyaringan request, dan Helper untuk utilitas fungsi global aplikasi.
+                   seperti Service untuk pemrosesan logika data, Middleware untuk otentikasi/penyaringan request, 
+                   dan Helper untuk utilitas fungsi global aplikasi.
