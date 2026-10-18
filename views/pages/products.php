@@ -8,7 +8,7 @@
     <!-- 1. Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- 2. Menghubungkan File CSS Kustom Kamu (public/css/style.css) -->
+    <!-- 2. Menghubungkan File CSS Kustom -->
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body style="background-color: #f8f9fa;">
@@ -112,7 +112,7 @@ $products = [
 
     <!-- Grid Produk (3 Kolom) -->
     <div class="row g-4">
-        <?php foreach ($products as $item): ?>
+        <?php foreach ($products as $index => $item): ?>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
                     <!-- Foto Produk -->
@@ -133,16 +133,18 @@ $products = [
                         <h5 class="card-title fw-bold text-dark"><?= htmlspecialchars($item['nama']); ?></h5>
                         <p class="card-text text-muted small mb-4"><?= htmlspecialchars($item['deskripsi']); ?></p>
                         
-                        <!-- Harga & Tombol Interaktif -->
+                        <!-- Harga & Tombol Pesan Dinamis -->
                         <div class="mt-auto d-flex justify-content-between align-items-center">
                             <span class="fw-bold fs-5" style="color: #B83280;">
                                 Rp <?= number_format($item['harga'], 0, ',', '.'); ?>
                             </span>
-                            <button class="btn text-white px-3 rounded-pill fw-semibold btn-pesan" 
-                                    style="background-color: #B83280;"
-                                    data-nama="<?= htmlspecialchars($item['nama']); ?>">
+                            
+                            <a href="/index.php?action=add_to_cart&id=<?= $index + 1 ?>&nama=<?= urlencode($item['nama']) ?>&harga=<?= $item['harga'] ?>&gambar=<?= urlencode('/' . $item['gambar']) ?>" 
+                               class="btn text-white px-3 rounded-pill fw-semibold btn-pesan text-decoration-none" 
+                               style="background-color: #B83280;"
+                               data-nama="<?= htmlspecialchars($item['nama']); ?>">
                                 + Pesan
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -151,7 +153,7 @@ $products = [
     </div>
 </div>
 
-<!-- 3. Menghubungkan File JavaScript Kustom Kamu (public/js/app.js) -->
+<!-- 3. Menghubungkan File JavaScript Kustom -->
 <script src="/js/app.js"></script>
 
 </body>
