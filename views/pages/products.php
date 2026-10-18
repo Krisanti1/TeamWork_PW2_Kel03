@@ -103,6 +103,12 @@ $products = [
 ];
 ?>
 
+<?php
+// 1. Panggil Header di paling atas
+require_once __DIR__ . '/../components/header.php';
+?>
+
+
 <div class="container my-5">
     <!-- Judul Halaman -->
     <div class="text-center mb-5">
@@ -152,6 +158,10 @@ $products = [
         <?php endforeach; ?>
     </div>
 </div>
+<?php
+// 3. Panggil Footer di paling bawah
+require_once __DIR__ . '/../components/footer.php';
+?>
 
 <!-- 3. Menghubungkan File JavaScript Kustom -->
 <script src="/js/app.js"></script>
