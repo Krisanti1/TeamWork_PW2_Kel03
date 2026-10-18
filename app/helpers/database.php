@@ -1,17 +1,12 @@
-
 <?php
+$host     = 'localhost';
+$dbname   = 'siskan_store';
+$username = 'root';
+$password = '';
 
-mysqli_report(MYSQLI_REPORT_OFF);
-
-$conn = new mysqli(
-    "localhost",
-    "root",
-    "",
-    "siskan_store"
-);
-
-if ($conn->connect_error) {
-    die("Koneksi database gagal: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Koneksi database gagal: " . $e->getMessage());
 }
-
-$conn->set_charset("utf8mb4");
