@@ -10,11 +10,11 @@ require_once __DIR__ . '/../app/helpers/database.php';
 require_once __DIR__ . '/../app/controllers/ProductController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 
-// Pastikan koneksi $conn terkirim ke AuthController
+// Inisialisasi AuthController dengan koneksi database
 $authController = new AuthController($conn);
 
 // ===================================================
-// 1. PENANGANAN AKSI / FORM PROSES (GET & POST ACTION)
+// 1. PENANGANAN AKSI (GET & POST ACTION)
 // ===================================================
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -92,16 +92,42 @@ if (isset($_GET['action'])) {
         $authController->logout();
         exit;
     }
+
+    // --- FITUR CRUD PRODUK ADMIN ---
+    if ($action === 'add_product') {
+        $productController = new ProductController();
+        $productController->store();
+        exit;
+    }
+
+    if ($action === 'update_product') {
+        $productController = new ProductController();
+        $productController->update();
+        exit;
+    }
+
+    if ($action === 'delete_product') {
+        $productController = new ProductController();
+        $productController->destroy();
+        exit;
+    }
 }
 
 // ===================================================
 // 2. ROUTING HALAMAN (VIEW ROUTER)
 // ===================================================
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$page = $_GET['page'] ?? '';
+$page = $_GET['page'] ?? 'home'; // Default ke 'home' jika tanpa parameter
 
 if (str_contains($path, '/services')) {
     // Routing services jika ada
+} elseif ($page === 'home') {
+    // 1. Halaman Beranda / Home SISKAN Store
+    require_once __DIR__ . '/../views/pages/home.php';
+} elseif ($page === 'products') {
+    // 2. Halaman Daftar Menu / Katalog Produk
+    $controller = new ProductController();
+    $controller->index();
 } elseif ($page === 'login') {
     $authController->loginForm();
 } elseif ($page === 'register') {
@@ -112,6 +138,13 @@ if (str_contains($path, '/services')) {
     require_once __DIR__ . '/../views/pages/order_detail.php';
 } elseif ($page === 'detail') {
     require_once __DIR__ . '/../views/pages/detail.php';
+} elseif ($page === 'admin_dashboard') {
+    // Keamanan: Cek apakah user sudah login dan benar-benar admin
+    if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+        echo "<script>alert('Akses ditolak! Anda bukan admin.'); window.location.href='/index.php?page=login';</script>";
+        exit;
+    }
+    require_once __DIR__ . '/../views/pages/admin_dashboard.php';
 } elseif ($page === 'categories') {
     require_once __DIR__ . '/../app/controllers/CategoryController.php';
     $controller = new CategoryController($conn);
@@ -122,7 +155,6 @@ if (str_contains($path, '/services')) {
         $controller->index();
     }
 } else {
-    // Halaman Utama: Katalog Produk
-    $controller = new ProductController();
-    $controller->index();
+    // Fallback default jika parameter page tidak dikenal
+    require_once __DIR__ . '/../views/pages/home.php';
 }
