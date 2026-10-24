@@ -38,21 +38,24 @@
                 <a href="index.php" class="nav-link <?= (!isset($_GET['page']) || $_GET['page'] == 'home') ? 'active' : '' ?>">
                     <i class="fa-solid fa-house"></i> Beranda
                 </a>
-                <a href="index.php?page=products" class="nav-link <?= (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : '' ?>">
+                <a href="/index.php?page=products" class="nav-link <?= (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : '' ?>">
                     <i class="fa-solid fa-burger"></i> Menu
                 </a>
                 <a href="index.php?page=categories" class="nav-link <?= (isset($_GET['page']) && $_GET['page'] == 'categories') ? 'active' : '' ?>">
                     <i class="fa-solid fa-list"></i> Kategori
                 </a>
             </nav>
+            <!--<a href="/index.php?page=products" class="nav-link <?= (isset($_GET['page']) && $_GET['page'] == 'categories') ? 'active' : '' ?>">
+                    <i class="fa-solid fa-list"></i> Katalog
+                </a>
 
             <!-- User Action Buttons -->
             <div class="header-actions">
-                <a href="/cart" class="btn-cart" title="Keranjang Belanja">
+                <a href="/index.php?page=cart" class="btn-cart" title="Keranjang Belanja">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-badge">3</span>
                 </a>
-                <a href="/login" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+                <a href="/index.php?page=login" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
             </div>
         </div>
     </header>

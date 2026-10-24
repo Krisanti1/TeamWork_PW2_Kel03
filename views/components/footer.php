@@ -13,8 +13,8 @@
                     Sistem Pemesanan Kantin Digital. Solusi praktis pesan makanan dan minuman favoritmu tanpa perlu mengantre.
                 </p>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/bookv4ult?obrf=N3dhZWZ6bnVtcDho" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/6283834674849" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="https://github.com/Krisanti1/TeamWork_PW2_Kel03.git" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
@@ -23,10 +23,10 @@
             <div class="footer-col">
                 <h4 class="footer-title">Navigasi Cepat</h4>
                 <ul class="footer-links">
-                    <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Beranda</a></li>
-                    <li><a href="/products"><i class="fa-solid fa-chevron-right"></i> Daftar Menu</a></li>
-                    <li><a href="/categories"><i class="fa-solid fa-chevron-right"></i> Kategori</a></li>
-                    <li><a href="/cart"><i class="fa-solid fa-chevron-right"></i> KeranjangSaya</a></li>
+                    <li><a href="index.php"><i class="fa-solid fa-chevron-right"></i> Beranda</a></li>
+                    <li><a href="index.php?page=products"><i class="fa-solid fa-chevron-right"></i> Daftar Menu</a></li>
+                    <li><a href="index.php?page=categories"><i class="fa-solid fa-chevron-right"></i> Kategori</a></li>
+                    <li><a href="index.php?page=cart"><i class="fa-solid fa-chevron-right"></i> KeranjangSaya</a></li>
                 </ul>
             </div>
 

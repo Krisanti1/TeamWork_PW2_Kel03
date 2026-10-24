@@ -10,10 +10,10 @@
 <body style="background-color: #f8f9fa;">
 
 <!-- NAVBAR DENGAN NAMA USER & PORTAL ADMIN -->
-<nav class="navbar navbar-expand-lg bg-white shadow-sm mb-4">
+<!-- <nav class="navbar navbar-expand-lg bg-white shadow-sm mb-4">
     <div class="container">
         <a class="navbar-brand fw-bold fs-4" href="/index.php?page=products" style="color: #6B46C1;">
-            SISKAN Store
+            test Store
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <?php
 $products = [

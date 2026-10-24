@@ -16,7 +16,7 @@ class CategoryController
     {
         $categories = $this->model->getCategories();
 
-        require __DIR__ . '/../views/categories/index.php';
+        require __DIR__ . '/../../views/categories/index.php';
     }
 
     public function show($kategori)
@@ -31,6 +31,6 @@ class CategoryController
         $categories = $this->model->getCategories();
         $products = $this->model->getProductsByCategory($kategori);
 
-        require __DIR__ . '/../views/categories/show.php';
+        require __DIR__ . '/../../views/categories/show.php';
     }
 }

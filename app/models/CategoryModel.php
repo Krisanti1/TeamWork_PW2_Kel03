@@ -23,7 +23,7 @@ class CategoryModel
             return [];
         }
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+       return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getProductsByCategory($kategori)
@@ -42,7 +42,7 @@ class CategoryModel
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $products = $result->fetch_all(MYSQLI_ASSOC);
+        $products = $result->fetchAll(PDO::FETCH_ASSOC);
 
         $stmt->close();
 
