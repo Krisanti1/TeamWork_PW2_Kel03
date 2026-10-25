@@ -30,14 +30,38 @@ class ProductController {
         }
     }
 
-    // CREATE: Tambah Produk Baru
+    // CREATE: Tambah Produk Baru dengan Upload File Gambar
     public function store() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nama     = trim($_POST['nama'] ?? '');
-            $kategori = trim($_POST['kategori'] ?? '');
-            $harga    = intval($_POST['harga'] ?? 0);
-            $deskripsi= trim($_POST['deskripsi'] ?? '');
-            $gambar   = trim($_POST['gambar'] ?? 'default.jpg');
+            $nama      = trim($_POST['nama'] ?? '');
+            $kategori  = trim($_POST['kategori'] ?? '');
+            $harga     = intval($_POST['harga'] ?? 0);
+            $deskripsi = trim($_POST['deskripsi'] ?? '');
+            $gambar    = '/uploads/default.jpg'; // Gambar default jika tidak diupload
+
+            // Proses Upload File Gambar (.jpeg, .jpg, .png)
+            if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
+                $fileTmpPath   = $_FILES['gambar']['tmp_name'];
+                $fileName      = $_FILES['gambar']['name'];
+                $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+                if (in_array($fileExtension, $allowedExtensions)) {
+                    $newFileName   = md5(time() . $fileName) . '.' . $fileExtension;
+                    $uploadFileDir = __DIR__ . '/../../public/uploads/';
+
+                    if (!is_dir($uploadFileDir)) {
+                        mkdir($uploadFileDir, 0755, true);
+                    }
+
+                    $dest_path = $uploadFileDir . $newFileName;
+
+                    if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                        $gambar = '/uploads/' . $newFileName;
+                    }
+                }
+            }
 
             if (!empty($nama) && $harga > 0) {
                 try {
@@ -49,7 +73,7 @@ class ProductController {
                         'deskripsi' => $deskripsi,
                         'gambar'    => $gambar
                     ]);
-                    echo "<script>alert('Menu berhasil ditambahkan!'); window.location.href='/index.php?page=admin_dashboard';</script>";
+                    echo "<script>alert('Menu dan foto berhasil ditambahkan!'); window.location.href='/index.php?page=admin_dashboard';</script>";
                     exit;
                 } catch (PDOException $e) {
                     echo "<script>alert('Gagal menambah menu: " . addslashes($e->getMessage()) . "'); window.location.href='/index.php?page=admin_dashboard';</script>";
@@ -59,15 +83,40 @@ class ProductController {
         }
     }
 
-    // UPDATE: Perbarui Produk
+    // UPDATE: Perbarui Produk (Bisa ganti foto atau tetap foto lama)
     public function update() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id       = intval($_POST['id'] ?? 0);
-            $nama     = trim($_POST['nama'] ?? '');
-            $kategori = trim($_POST['kategori'] ?? '');
-            $harga    = intval($_POST['harga'] ?? 0);
-            $deskripsi= trim($_POST['deskripsi'] ?? '');
-            $gambar   = trim($_POST['gambar'] ?? 'default.jpg');
+            $id        = intval($_POST['id'] ?? 0);
+            $nama      = trim($_POST['nama'] ?? '');
+            $kategori  = trim($_POST['kategori'] ?? '');
+            $harga     = intval($_POST['harga'] ?? 0);
+            $deskripsi = trim($_POST['deskripsi'] ?? '');
+            $gambarLama= trim($_POST['gambar_lama'] ?? '');
+            $gambar    = $gambarLama;
+
+            // Cek apakah admin mengupload foto baru saat edit
+            if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
+                $fileTmpPath   = $_FILES['gambar']['tmp_name'];
+                $fileName      = $_FILES['gambar']['name'];
+                $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+                if (in_array($fileExtension, $allowedExtensions)) {
+                    $newFileName   = md5(time() . $fileName) . '.' . $fileExtension;
+                    $uploadFileDir = __DIR__ . '/../../public/uploads/';
+
+                    if (!is_dir($uploadFileDir)) {
+                        mkdir($uploadFileDir, 0755, true);
+                    }
+
+                    $dest_path = $uploadFileDir . $newFileName;
+
+                    if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                        $gambar = '/uploads/' . $newFileName;
+                    }
+                }
+            }
 
             if ($id > 0 && !empty($nama)) {
                 try {

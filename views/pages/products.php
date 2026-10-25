@@ -1,124 +1,48 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Menu Kantin - SISKAN Store</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body style="background-color: #f8f9fa;">
-
-<!-- NAVBAR DENGAN NAMA USER & PORTAL ADMIN -->
-<!-- <nav class="navbar navbar-expand-lg bg-white shadow-sm mb-4">
-    <div class="container">
-        <a class="navbar-brand fw-bold fs-4" href="/index.php?page=products" style="color: #6B46C1;">
-            test Store
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold active" href="/index.php?page=products">Katalog Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold" href="/index.php?page=cart">Keranjang Pesanan</a>
-                </li>
-            </ul>
-
-            <div class="d-flex align-items-center gap-2">
-                <?php if (isset($_SESSION['user_nama'])): ?>
-                    <span class="fw-semibold small text-muted me-2">Halo, <?= htmlspecialchars($_SESSION['user_nama']) ?></span>
-                    <a href="/index.php?action=logout" class="btn btn-outline-danger btn-sm rounded-pill px-3">Logout</a>
-                <?php else: ?>
-                    <a href="/index.php?page=login" class="btn btn-outline-primary btn-sm rounded-pill px-3">
-                        Login User
-                    </a>
-                    <a href="/index.php?page=login&role=admin" class="btn text-white btn-sm rounded-pill px-3" style="background-color: #6B46C1;">
-                        Portal Admin
-                    </a>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</nav> -->
-
 <?php
-$products = [
-    ['nama' => 'Tahu Goreng Crispy', 'kategori' => 'Cemilan', 'harga' => 5000, 'gambar' => 'tahugoreng.jpg', 'deskripsi' => 'Tahu goreng renyah gurih disajikan hangat dengan sambal kecap.'],
-    ['nama' => 'Nasi Goreng Spesial', 'kategori' => 'Makanan', 'harga' => 13000, 'gambar' => 'nasi-goreng.jpg', 'deskripsi' => 'Nasi goreng dengan bumbu khas, telur dadar, dan kerupuk renyah.'],
-    ['nama' => 'Ayam Geprek Sambal Korek', 'kategori' => 'Makanan', 'harga' => 15000, 'gambar' => 'ayam-geprek.jpg', 'deskripsi' => 'Ayam krispi digeprek dengan sambal korek pedas mantap + nasi.'],
-    ['nama' => 'Mie Goreng Kantin', 'kategori' => 'Makanan', 'harga' => 10000, 'gambar' => 'mie-goreng.jpg', 'deskripsi' => 'Mie goreng lezat dengan pilihan telur ceplok atau dadar.'],
-    ['nama' => 'Bakso Kuah Sapi', 'kategori' => 'Makanan', 'harga' => 12000, 'gambar' => 'bakso.jpg', 'deskripsi' => 'Bakso daging sapi kenyal dengan kuah kaldu hangat dan bihun.'],
-    ['nama' => 'Soto Ayam Madura', 'kategori' => 'Makanan', 'harga' => 14000, 'gambar' => 'soto-ayam.jpg', 'deskripsi' => 'Soto ayam berkuah kuning gurih segar lengkap dengan koya dan nasi.'],
-    ['nama' => 'Es Teh Manis', 'kategori' => 'Minuman', 'harga' => 3000, 'gambar' => 'es-teh.jpg', 'deskripsi' => 'Es teh segar dingin pelepas dahaga setelah kuliah.'],
-    ['nama' => 'Es Jeruk Peras', 'kategori' => 'Minuman', 'harga' => 5000, 'gambar' => 'es-jeruk.jpg', 'deskripsi' => 'Sari jeruk asli peras kaya vitamin C, asam manis segar.'],
-    ['nama' => 'Kopi Hitam / Susu', 'kategori' => 'Minuman', 'harga' => 4000, 'gambar' => 'kopi.jpg', 'deskripsi' => 'Seduhan kopi nikmat penahan kantuk saat nugas.'],
-    ['nama' => 'Matcha Latte Ice', 'kategori' => 'Minuman', 'harga' => 8000, 'gambar' => 'matcha.jpg', 'deskripsi' => 'Minuman matcha hijau creamy dan manis dingin penambah semangat.'],
-    ['nama' => 'Roti Bakar Cokelat Keju', 'kategori' => 'Cemilan', 'harga' => 8000, 'gambar' => 'roti-bakar.jpg', 'deskripsi' => 'Roti bakar empuk isi topping cokelat lumer dan parutan keju.'],
-    ['nama' => 'Pisang Cokelat Lumer', 'kategori' => 'Cemilan', 'harga' => 6000, 'gambar' => 'piscok.jpg', 'deskripsi' => 'Pisang cokelat goreng crispy dengan keju dan saus cokelat.']
-];
-?>
-
-<?php
-// 1. Panggil Header di paling atas
+// Pastikan header dimuat
 require_once __DIR__ . '/../components/header.php';
 ?>
 
-
-<div class="container my-5">
-    <div class="text-center mb-5">
-        <h2 class="fw-bold" style="color: #6B46C1;">Daftar Menu Kantin</h2>
-        <p class="text-muted">Pilih makanan, minuman, dan cemilan favoritmu di SISKAN Store</p>
+<div class="container my-4">
+    <div class="mb-4">
+        <h2 class="fw-bold" style="color: #6B46C1;"><i class="fa-solid fa-burger me-2"></i> Daftar Menu Kantin</h2>
+        <p class="text-muted">Pilih menu favoritmu dan pesan sekarang secara online!</p>
     </div>
 
     <div class="row g-4">
-        <?php foreach ($products as $index => $item): ?>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                    <img src="/<?= $item['gambar']; ?>" 
-                         class="card-img-top" 
-                         alt="<?= htmlspecialchars($item['nama']); ?>" 
-                         style="height: 200px; object-fit: cover;"
-                         onerror="this.src='https://via.placeholder.com/300x200?text=Kantin+SISKAN';">
-                    
-                    <div class="card-body d-flex flex-column p-4">
-                        <span class="badge mb-2 px-3 py-2 align-self-start rounded-pill" 
-                              style="background-color: #E9D8FD; color: #553C9A;">
-                            <?= htmlspecialchars($item['kategori']); ?>
-                        </span>
+        <?php if (empty($products)): ?>
+            <div class="col-12 text-center py-5">
+                <p class="text-muted fs-5">Belum ada menu yang tersedia saat ini.</p>
+            </div>
+        <?php else: ?>
+            <?php foreach ($products as $item): ?>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <!-- Foto Produk -->
+                        <img src="<?= htmlspecialchars($item['gambar']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['nama']) ?>" style="height: 180px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x180?text=SISKAN.store'">
                         
-                        <h5 class="card-title fw-bold text-dark"><?= htmlspecialchars($item['nama']); ?></h5>
-                        <p class="card-text text-muted small mb-4"><?= htmlspecialchars($item['deskripsi']); ?></p>
-                        
-                        <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <span class="fw-bold fs-5" style="color: #B83280;">
-                                Rp <?= number_format($item['harga'], 0, ',', '.'); ?>
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-light text-primary border rounded-pill align-self-start mb-2 px-3 small">
+                                <?= htmlspecialchars($item['kategori'] ?? 'Umum') ?>
                             </span>
+                            <h5 class="card-title fw-bold text-dark mb-1"><?= htmlspecialchars($item['nama']) ?></h5>
+                            <p class="text-muted small mb-3 flex-grow-1"><?= htmlspecialchars($item['deskripsi'] ?? '-') ?></p>
                             
-                            <a href="/index.php?action=add_to_cart&id=<?= $index + 1 ?>&nama=<?= urlencode($item['nama']) ?>&harga=<?= $item['harga'] ?>&gambar=<?= urlencode('/' . $item['gambar']) ?>" 
-                               class="btn text-white px-3 rounded-pill fw-semibold btn-pesan text-decoration-none" 
-                               style="background-color: #B83280;">
-                                + Pesan
-                            </a>
+                            <div class="d-flex align-items-center justify-content-between mt-auto">
+                                <span class="fw-bold text-success">Rp <?= number_format($item['harga'], 0, ',', '.') ?></span>
+                                <!-- Tombol Pesan / Tambah ke Keranjang -->
+                                <a href="/index.php?action=add_to_cart&id=<?= $item['id'] ?>&nama=<?= urlencode($item['nama']) ?>&harga=<?= $item['harga'] ?>&gambar=<?= urlencode($item['gambar']) ?>" class="btn btn-sm text-white rounded-pill px-3 fw-semibold" style="background-color: #B83280;">
+                                    <i class="fa-solid fa-cart-plus me-1"></i> Pesan
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
+
 <?php
-// 3. Panggil Footer di paling bawah
 require_once __DIR__ . '/../components/footer.php';
 ?>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/app.js"></script>
-
-</body>
-</html>

@@ -1,5 +1,4 @@
 <?php
-// Pastikan hanya admin yang bisa akses
 if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
     echo "<script>alert('Akses Ditolak!'); window.location.href='/index.php?page=login';</script>";
     exit;
@@ -34,7 +33,6 @@ $products = $productController->getAllProducts();
     </nav>
 
     <div class="container my-5">
-        <!-- HEADER KONTEN -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h3 class="fw-bold mb-1" style="color: #6B46C1;">Kelola Menu Kantin (CRUD)</h3>
@@ -45,7 +43,7 @@ $products = $productController->getAllProducts();
             </button>
         </div>
 
-        <!-- TABEL DAFTAR MENU (READ) -->
+        <!-- TABEL DAFTAR MENU -->
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -71,18 +69,16 @@ $products = $productController->getAllProducts();
                                     <tr>
                                         <td class="ps-4 fw-bold"><?= $no++ ?></td>
                                         <td>
-                                            <img src="<?= htmlspecialchars($item['gambar']) ?>" alt="img" class="rounded-3" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/50'">
+                                            <img src="<?= htmlspecialchars($item['gambar']) ?>" alt="img" class="rounded-3 shadow-sm" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/50'">
                                         </td>
                                         <td class="fw-semibold"><?= htmlspecialchars($item['nama']) ?></td>
                                         <td><span class="badge bg-info text-dark rounded-pill px-3"><?= htmlspecialchars($item['kategori'] ?? 'Umum') ?></span></td>
                                         <td class="fw-bold text-success">Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
                                         <td class="small text-muted" style="max-width: 250px;"><?= htmlspecialchars($item['deskripsi'] ?? '-') ?></td>
                                         <td class="text-center">
-                                            <!-- Tombol Edit -->
                                             <button class="btn btn-warning btn-sm rounded-circle me-1" data-bs-toggle="modal" data-bs-target="#modalEdit<?= $item['id'] ?>" title="Edit">
                                                 <i class="fa-solid fa-pen text-white"></i>
                                             </button>
-                                            <!-- Tombol Hapus -->
                                             <a href="/index.php?action=delete_product&id=<?= $item['id'] ?>" class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Apakah kamu yakin ingin menghapus menu ini?')" title="Hapus">
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
@@ -97,9 +93,11 @@ $products = $productController->getAllProducts();
                                                     <h5 class="modal-title fw-bold">Edit Menu Makanan</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
-                                                <form action="/index.php?action=update_product" method="POST">
+                                                <form action="/index.php?action=update_product" method="POST" enctype="multipart/form-data">
                                                     <div class="modal-body">
                                                         <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                                        <input type="hidden" name="gambar_lama" value="<?= htmlspecialchars($item['gambar']) ?>">
+                                                        
                                                         <div class="mb-3">
                                                             <label class="form-label small">Nama Menu</label>
                                                             <input type="text" name="nama" class="form-control rounded-3" value="<?= htmlspecialchars($item['nama']) ?>" required>
@@ -117,8 +115,9 @@ $products = $productController->getAllProducts();
                                                             <input type="number" name="harga" class="form-control rounded-3" value="<?= $item['harga'] ?>" required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label small">URL / Path Gambar</label>
-                                                            <input type="text" name="gambar" class="form-control rounded-3" value="<?= htmlspecialchars($item['gambar']) ?>">
+                                                            <label class="form-label small">Ganti Foto Menu (.jpg, .jpeg, .png)</label>
+                                                            <input type="file" name="gambar" class="form-control rounded-3" accept=".jpg, .jpeg, .png">
+                                                            <div class="form-text small">Biarkan kosong jika tidak ingin mengubah foto.</div>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label small">Deskripsi</label>
@@ -150,7 +149,7 @@ $products = $productController->getAllProducts();
                     <h5 class="modal-title fw-bold" style="color: #6B46C1;">Tambah Menu Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="/index.php?action=add_product" method="POST">
+                <form action="/index.php?action=add_product" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label small">Nama Menu</label>
@@ -169,8 +168,8 @@ $products = $productController->getAllProducts();
                             <input type="number" name="harga" class="form-control rounded-3" placeholder="15000" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label small">URL / Path Gambar</label>
-                            <input type="text" name="gambar" class="form-control rounded-3" placeholder="https://... atau /images/menu1.jpg">
+                            <label class="form-label small">Upload Foto Menu (.jpg, .jpeg, .png)</label>
+                            <input type="file" name="gambar" class="form-control rounded-3" accept=".jpg, .jpeg, .png" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small">Deskripsi</label>
